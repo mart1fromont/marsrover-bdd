@@ -1,0 +1,16 @@
+{
+    "require-dev": {
+        "phpunit/phpunit": "^9.5",
+        "behat/behat": "^3.10"
+    },
+    "autoload": {
+        "psr-4": {
+            "Ulco\\" : "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Ulco\\Tests\\": "tests/"
+        }
+    }
+}
