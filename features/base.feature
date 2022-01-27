@@ -14,13 +14,3 @@ Feature: You are given the initial starting point (x,y) of a rover and the direc
     When I land the rover at "0", "1"
     Then Rover should be in "0", "1
 
-  Scenario: Rover start at "x" and "y" in Mars
-    Given there is a rover
-    And there is Mars
-    When I land the rover at "1", "1"
-    Then Rover should be in "1", "1
-
-  Scenario: Rover start looking at "N"
-    Given there is a rover
-    When I land the rover looking at "N"
-    Then Rover should be facing "N"
