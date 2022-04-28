@@ -26,10 +26,21 @@ make up
 make ex
 ```
 
+### Run composer
+```bash
+composer install
+```
+
+### Create scnearios
+
+```bash
+vendor/bin/behat --append-snippets
+```
+
 #### Run tests
 
 ```
-vendor/bin/phpunit
+vendor/bin/behat
 ```
 
 ## Configure xdebug
