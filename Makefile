@@ -15,8 +15,9 @@ build:
 	docker build -t ulco-marsrover-bdd .
 
 up:
-	docker run -it -d --env-file ./docker/xdebug.env --name ulco-marsrover-bdd -v $(shell pwd):/app -v $(shell pwd)/docker/xdebug.ini:/usr/local/etc/php/conf.d/docker-php-ext-xdebug-20.ini:ro -w=/app ulco-marsrover-bdd
+	docker run -it -d --env-file ./docker/xdebug.env --name ulco-marsrover-bdd -v ${CURDIR}:/app -v ${CURDIR}/docker/xdebug.ini:/usr/local/etc/php/conf.d/docker-php-ext-xdebug-20.ini:ro -w=/app ulco-marsrover-bdd
 	docker exec -it ulco-marsrover-bdd sh ./docker/setup-xdebug.sh
+	docker exec -it ulco-marsrover-bdd composer install
 
 do:
 	docker rm -vf ulco-marsrover-bdd
