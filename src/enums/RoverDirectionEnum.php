@@ -2,10 +2,10 @@
 
 namespace Ulco\enums;
 
-enum RoverDirectionEnum
+class RoverDirectionEnum
 {
-    case North;
-    case South;
-    case East;
-    case West;
+    public const NORTH = 'N';
+    public const SOUTH = 'S';
+    public const EAST = 'E';
+    public const WEST = 'W';
 }

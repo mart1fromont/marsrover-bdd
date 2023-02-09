@@ -3,6 +3,7 @@
 declare(strict_types=1);
 
 use Behat\Behat\Context\Context;
+use Ulco\enums\RoverDirectionEnum;
 use Ulco\Mars;
 use Ulco\Rover;
 use Ulco\enums\RoverCommandEnum;
@@ -91,5 +92,14 @@ class FeatureContext implements Context
     public function iTurnTheRoverRight()
     {
         $this->rover->send(RoverCommandEnum::RIGHT);
+    }
+
+    /**
+     * @Then Rover should be facing :arg1
+     */
+
+    public function roverShouldBeFacing(RoverDirectionEnum $arg1)
+    {
+        assert($this->rover->getDirection() === $arg1);
     }
 }
