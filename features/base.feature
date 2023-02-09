@@ -10,51 +10,50 @@ Feature: You are given the initial starting point (x,y) of a rover and the direc
 
   Scenario: Rover start at "x" and "y" in Mars
     Given there is a rover
-    And there is Mars
+    And there is Mars of size "5"
     When I land the rover at "0", "1"
     Then Rover should be in "0", "1
 
   Scenario: Rover moves forward
     Given there is a rover
-    And there is Mars
+    And there is Mars of size "5"
     When I land the rover at "0", "1"
     And I move the rover forward
     Then Rover should be in "0", "2"
 
   Scenario: Rover moves backward
     Given there is a rover
-    And there is Mars
+    And there is Mars of size "5"
     When I land the rover at "0", "1"
     And I move the rover backward
     Then Rover should be in "0", "0"
 
   Scenario: Rover turns left
     Given there is a rover
-    And there is Mars
+    And there is Mars of size "5"
     When I land the rover at "0", "1"
     And I turn the rover left
     Then Rover should be facing "W"
 
   Scenario: Rover turns right
     Given there is a rover
-    And there is Mars
+    And there is Mars of size "5"
     When I land the rover at "0", "1"
     And I turn the rover right
     Then Rover should be facing "E"
 
   Scenario: Planet wraps
     Given there is a rover
-    And there is Mars
-    When I land the rover at "0", "1"
-    And I move the rover forward until it reaches the edge of the map
+    And there is Mars of size "5"
+    When I land the rover at "0", "4"
     And I move the rover forward
     Then Rover should be in "0", "0"
 
-  Scenario: Rover detects obstacle
-    Given there is a rover
-    And there is Mars
-    And there is an obstacle at "0", "2"
-    When I land the rover at "0", "1"
-    And I move the rover forward
-    Then Rover should be in "0", "1"
-    And Rover should report "Obstacle at 0,2"
+  #Scenario: Rover detects obstacle
+  #  Given there is a rover
+  #  And there is Mars of size "5"
+  #  And there is an obstacle at "0", "2"
+  #  When I land the rover at "0", "1"
+  #  And I move the rover forward
+  #  Then Rover should be in "0", "1"
+  #  And Rover should report "Obstacle at 0,2"

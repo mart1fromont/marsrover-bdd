@@ -3,7 +3,6 @@
 declare(strict_types=1);
 
 use Behat\Behat\Context\Context;
-use Ulco\enums\RoverDirectionEnum;
 use Ulco\Mars;
 use Ulco\Rover;
 use Ulco\enums\RoverCommandEnum;
@@ -35,15 +34,15 @@ class FeatureContext implements Context
      */
     public function thereIsARover(): void
     {
-        $this->rover = new Rover();
+        $this->rover = new Rover(1);
     }
 
     /**
-     * @Given there is Mars
+     * @Given there is Mars of size :size
      */
-    public function thereIsMars(): void
+    public function thereIsMarsOfSize(int $size): void
     {
-        $this->mars = new Mars();
+        $this->mars = new Mars($size);
     }
 
     /**
@@ -55,12 +54,13 @@ class FeatureContext implements Context
     }
 
     /**
-     * @Then Rover should be in :arg1, ":arg2
+     * @Then Rover should be in :x, :y
      */
-    public function roverShouldBeIn(int $arg1,int $arg2): void
+    public function roverShouldBeIn(int $x, int $y): void
     {
-        Assert::eq($this->rover->getX(), $arg1);
-        Assert::eq($this->rover->getY(), $arg2);
+        $position = $this->rover->getPlanet()->getPosition($this->rover);
+        Assert::eq($position->x, $x);
+        Assert::eq($position->y, $y);
     }
 
     /**
@@ -102,17 +102,6 @@ class FeatureContext implements Context
     public function roverShouldBeFacing(string $arg1): void
     {
         assert($this->rover->getDirection() === toRoverDirectionEnum($arg1));
-    }
-
-    /**
-     * @When I move the rover forward until it reaches the edge of the map
-     */
-
-    public function iMoveTheRoverForwardUntilItReachesTheEdgeOfTheMap()
-    {
-        for($i = 0; $i < ($this->rover->getPlanet()->getSize()[1]-$this->rover->getY()); $i++) {
-            $this->rover->send(RoverCommandEnum::FORWARD);
-        }
     }
 
     /**

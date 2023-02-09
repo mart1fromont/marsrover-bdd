@@ -9,27 +9,26 @@ use Ulco\enums\RoverDirectionEnum;
 
 class Rover
 {
-    private int $x;
-
-    private int $y;
+    public int $id;
 
     private RoverDirectionEnum $direction;
 
     private Mars $planet;
 
-    public function __construct()
+
+    public function __construct(int $id)
     {
         $this->direction = RoverDirectionEnum::North;
+        $this->id = $id;
     }
 
-    public function getX(): int
+    /**
+     * Gets id
+     * @return int
+     */
+    public function getId(): int
     {
-        return $this->x;
-    }
-
-    public function getY(): int
-    {
-        return $this->y;
+        return $this->id;
     }
 
     public function getDirection(): RoverDirectionEnum
@@ -45,8 +44,8 @@ class Rover
     public function land(Mars $planet, int $x, int $y) : void
     {
         $this->planet = $planet;
-        $this->x = $x;
-        $this->y = $y;
+
+        $planet->map[$x][$y] = $this;
     }
 
     /**
@@ -58,12 +57,12 @@ class Rover
         switch ($command) {
             // Move forward
             case RoverCommandEnum::MOVE_FORWARD:
-                $this->moveForward();
+                $this->planet->moveForward($this);
                 break;
 
             // Move backward
             case RoverCommandEnum::MOVE_BACKWARD:
-                $this->moveBackward();
+                $this->planet->moveBackward($this);
                 break;
 
             // Turn left
@@ -74,50 +73,6 @@ class Rover
             // Turn right
             case RoverCommandEnum::TURN_RIGHT:
                 $this->turnRight();
-                break;
-        }
-    }
-
-    /**
-     * Moves the rover forward depending on its direction
-     * @return void
-     */
-    private function moveForward() : void
-    {
-        switch ($this->direction) {
-            case RoverDirectionEnum::North:
-                $this->y++;
-                break;
-            case RoverDirectionEnum::South:
-                $this->y--;
-                break;
-            case RoverDirectionEnum::East:
-                $this->x++;
-                break;
-            case RoverDirectionEnum::West:
-                $this->x--;
-                break;
-        }
-    }
-
-    /**
-     * Moves the rover backward depending on its direction
-     * @return void
-     */
-    private function moveBackward() : void
-    {
-        switch ($this->direction) {
-            case RoverDirectionEnum::North:
-                $this->y--;
-                break;
-            case RoverDirectionEnum::South:
-                $this->y++;
-                break;
-            case RoverDirectionEnum::East:
-                $this->x--;
-                break;
-            case RoverDirectionEnum::West:
-                $this->x++;
                 break;
         }
     }
