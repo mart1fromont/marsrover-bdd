@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-use Behat\Behat\Tester\Exception\PendingException;
 use Behat\Behat\Context\Context;
 use Ulco\Mars;
 use Ulco\Rover;
-use Ulco\RoverCommandEnum;
+use Ulco\enums\RoverCommandEnum;
+use Webmozart\Assert\Assert;
 
 /**
  * Defines application features from the specific context.
@@ -57,8 +57,8 @@ class FeatureContext implements Context
      */
     public function roverShouldBeIn(int $arg1,int $arg2)
     {
-        assert($this->rover->getX() === $arg1);
-        assert($this->rover->getY() === $arg2);
+        Assert::eq($this->rover->getX(), $arg1);
+        Assert::eq($this->rover->getY(), $arg2);
     }
 
     /**

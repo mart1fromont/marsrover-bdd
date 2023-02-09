@@ -6,5 +6,4 @@ namespace Ulco;
 
 class Mars
 {
-
 }

@@ -1,11 +1,11 @@
 <?php
 
-namespace Ulco;
+namespace Ulco\enums;
 
 class RoverCommandEnum
 {
-    public const FORWARD = 'F';
-    public const BACKWARD = 'B';
-    public const LEFT = 'L';
-    public const RIGHT = 'R';
+    public const FORWARD = 'f';
+    public const BACKWARD = 'b';
+    public const LEFT = 'l';
+    public const RIGHT = 'r';
 }
