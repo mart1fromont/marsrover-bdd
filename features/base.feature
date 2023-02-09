@@ -28,3 +28,16 @@ Feature: You are given the initial starting point (x,y) of a rover and the direc
     And I move the rover backward
     Then Rover should be in "0", "0"
 
+  Scenario: Rover turns left
+    Given there is a rover
+    And there is Mars
+    When I land the rover at "0", "1"
+    And I turn the rover left
+    Then Rover should be facing "W"
+
+  Scenario: Rover turns right
+    Given there is a rover
+    And there is Mars
+    When I land the rover at "0", "1"
+    And I turn the rover right
+    Then Rover should be facing "E"

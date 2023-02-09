@@ -76,4 +76,20 @@ class FeatureContext implements Context
     {
         $this->rover->send(RoverCommandEnum::BACKWARD);
     }
+
+    /**
+     * @When I turn the rover left
+     */
+    public function iTurnTheRoverLeft()
+    {
+        $this->rover->send(RoverCommandEnum::LEFT);
+    }
+
+    /**
+     * @When I turn the rover right
+     */
+    public function iTurnTheRoverRight()
+    {
+        $this->rover->send(RoverCommandEnum::RIGHT);
+    }
 }
