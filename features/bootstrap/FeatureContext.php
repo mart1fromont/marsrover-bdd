@@ -33,7 +33,7 @@ class FeatureContext implements Context
      */
     public function thereIsARover()
     {
-        $rover = new Rover();
+        $this->rover = new Rover();
     }
 
     /**
@@ -47,7 +47,7 @@ class FeatureContext implements Context
     /**
      * @When I land the rover at :arg1, :arg2
      */
-    public function iLandTheRoverAt($arg1, $arg2)
+    public function iLandTheRoverAt(int $arg1, int $arg2)
     {
         $this->rover->land($this->mars, $arg1, $arg2);
     }
@@ -55,7 +55,7 @@ class FeatureContext implements Context
     /**
      * @Then Rover should be in :arg1, ":arg2
      */
-    public function roverShouldBeIn($arg1, $arg2)
+    public function roverShouldBeIn(int $arg1,int $arg2)
     {
         assert($this->rover->getX() === $arg1);
         assert($this->rover->getY() === $arg2);
