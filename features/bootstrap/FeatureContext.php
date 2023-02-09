@@ -70,7 +70,7 @@ class FeatureContext implements Context
      */
     public function iMoveTheRoverForward(): void
     {
-        $this->rover->send(RoverCommandEnum::MOVE_FORWARD);
+        $this->rover->send([RoverCommandEnum::MOVE_FORWARD]);
     }
 
     /**
@@ -78,7 +78,7 @@ class FeatureContext implements Context
      */
     public function iMoveTheRoverBackward(): void
     {
-        $this->rover->send(RoverCommandEnum::MOVE_BACKWARD);
+        $this->rover->send([RoverCommandEnum::MOVE_BACKWARD]);
     }
 
     /**
@@ -86,7 +86,7 @@ class FeatureContext implements Context
      */
     public function iTurnTheRoverLeft(): void
     {
-        $this->rover->send(RoverCommandEnum::TURN_LEFT);
+        $this->rover->send([RoverCommandEnum::TURN_LEFT]);
     }
 
     /**
@@ -94,7 +94,7 @@ class FeatureContext implements Context
      */
     public function iTurnTheRoverRight(): void
     {
-        $this->rover->send(RoverCommandEnum::TURN_RIGHT);
+        $this->rover->send([RoverCommandEnum::TURN_RIGHT]);
     }
 
     /**

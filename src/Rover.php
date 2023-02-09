@@ -53,27 +53,29 @@ class Rover extends MarsObject
      * @param string $command
      * @return void
      */
-    public function send(string $command) : void {
-        switch ($command) {
-            // Move forward
-            case RoverCommandEnum::MOVE_FORWARD:
-                $this->planet->moveForward($this);
-                break;
+    public function send(array $commands) : void {
+        foreach ($commands as $command) {
+            switch ($command) {
+                // Move forward
+                case RoverCommandEnum::MOVE_FORWARD:
+                    $this->planet->moveForward($this);
+                    break;
 
-            // Move backward
-            case RoverCommandEnum::MOVE_BACKWARD:
-                $this->planet->moveBackward($this);
-                break;
+                // Move backward
+                case RoverCommandEnum::MOVE_BACKWARD:
+                    $this->planet->moveBackward($this);
+                    break;
 
-            // Turn left
-            case RoverCommandEnum::TURN_LEFT:
-                $this->turnLeft();
-                break;
+                // Turn left
+                case RoverCommandEnum::TURN_LEFT:
+                    $this->turnLeft();
+                    break;
 
-            // Turn right
-            case RoverCommandEnum::TURN_RIGHT:
-                $this->turnRight();
-                break;
+                // Turn right
+                case RoverCommandEnum::TURN_RIGHT:
+                    $this->turnRight();
+                    break;
+            }
         }
     }
 
