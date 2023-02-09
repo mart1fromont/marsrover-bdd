@@ -34,7 +34,7 @@ abstract class Movement
      * @param Mars $planet
      * @return object
      */
-    private function checkBounds(int $x, int $y, Mars $planet) : object {
+    private function changePositionsForBounds(int $x, int $y, Mars $planet) : object {
         if ($x < 0) {
             $x = $planet->getSize() - 1;
         }
@@ -81,7 +81,7 @@ abstract class Movement
      */
     protected function moveRover(int $oldX, int $x, int $oldY, int $y, Rover $rover, Mars $planet) : void
     {
-        $position = $this->checkBounds($x, $y, $planet);
+        $position = $this->changePositionsForBounds($x, $y, $planet);
         $x = $position->x;
         $y = $position->y;
 

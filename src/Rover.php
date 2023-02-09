@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace Ulco;
 
 use Ulco\enums\MarsObjectTypeEnum;
-use Ulco\enums\RoverCommandEnum;
 use Ulco\enums\RoverDirectionEnum;
 use Ulco\movement\BackwardMovement;
 use Ulco\movement\ForwardMovement;
