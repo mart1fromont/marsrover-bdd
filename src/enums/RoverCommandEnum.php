@@ -2,10 +2,13 @@
 
 namespace Ulco\enums;
 
+/**
+ * Enum for rover commands
+ */
 class RoverCommandEnum
 {
-    public const FORWARD = 'f';
-    public const BACKWARD = 'b';
-    public const LEFT = 'l';
-    public const RIGHT = 'r';
+    public const MOVE_FORWARD = 'f';
+    public const MOVE_BACKWARD = 'b';
+    public const TURN_LEFT = 'l';
+    public const TURN_RIGHT = 'r';
 }
