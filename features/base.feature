@@ -28,6 +28,13 @@ Feature: You are given the initial starting point (x,y) of a rover and the direc
     And I move the rover backward
     Then Rover should be in "0", "0"
 
+  Scenario: Rover gets a list of moves
+    Given there is a rover
+    And there is Mars of size "5"
+    When I land the rover at "0", "1"
+    And I move the rover forward 2 times then turn left then backward 2 times
+    Then Rover should be in "2", "3"
+
   Scenario: Rover turns left
     Given there is a rover
     And there is Mars of size "5"

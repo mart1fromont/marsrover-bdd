@@ -122,4 +122,20 @@ class FeatureContext implements Context
         $object = $this->mars->getObjectAt($x, $y);
         Assert::eq($object->getType(), MarsObjectTypeEnum::Rock);
     }
+
+    /**
+     * @When I move the rover forward :i times then turn left then backward :j times
+     */
+    public function iMoveTheRoverForwardTimesThenTurnLeftThenBackwardTimes(int $i, int $j): void
+    {
+            $orders = [];
+            for ($k = 0; $k < $i; $k++) {
+                $orders[] = RoverCommandEnum::MOVE_FORWARD;
+            }
+            $orders[] = RoverCommandEnum::TURN_LEFT;
+            for ($k = 0; $k < $j; $k++) {
+                $orders[] = RoverCommandEnum::MOVE_BACKWARD;
+            }
+            $this->rover->send($orders);
+    }
 }
