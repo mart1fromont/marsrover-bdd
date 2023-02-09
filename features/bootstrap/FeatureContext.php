@@ -103,4 +103,15 @@ class FeatureContext implements Context
     {
         assert($this->rover->getDirection() === toRoverDirectionEnum($arg1));
     }
+
+    /**
+     * @When I move the rover forward until it reaches the edge of the map
+     */
+
+    public function iMoveTheRoverForwardUntilItReachesTheEdgeOfTheMap()
+    {
+        for($i = 0; $i < ($this->rover->getPlanet()->getSize()[1]-$this->rover->getY()); $i++) {
+            $this->rover->send(RoverCommandEnum::FORWARD);
+        }
+    }
 }
