@@ -114,4 +114,20 @@ class FeatureContext implements Context
             $this->rover->send(RoverCommandEnum::FORWARD);
         }
     }
+
+    /**
+     * @Given there is an obstacle at :arg1, :arg2
+     */
+    public function thereIsAnObstacleAt(int $arg1, int $arg2): void
+    {
+        $this->mars->addObstacle($arg1, $arg2);
+    }
+
+    /**
+     * @Then Rover should report :arg1
+     */
+    public function RoverShouldReport (String $message): void
+    {
+        Assert::eq($this->rover->getObstacleMessage(), $message);
+    }
 }

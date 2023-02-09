@@ -49,3 +49,12 @@ Feature: You are given the initial starting point (x,y) of a rover and the direc
     And I move the rover forward until it reaches the edge of the map
     And I move the rover forward
     Then Rover should be in "0", "0"
+
+  Scenario: Rover detects obstacle
+    Given there is a rover
+    And there is Mars
+    And there is an obstacle at "0", "2"
+    When I land the rover at "0", "1"
+    And I move the rover forward
+    Then Rover should be in "0", "1"
+    And Rover should report "Obstacle at 0,2"
