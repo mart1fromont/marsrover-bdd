@@ -6,6 +6,7 @@ use Behat\Behat\Tester\Exception\PendingException;
 use Behat\Behat\Context\Context;
 use Ulco\Mars;
 use Ulco\Rover;
+use Ulco\RoverCommandEnum;
 
 /**
  * Defines application features from the specific context.
@@ -58,5 +59,21 @@ class FeatureContext implements Context
     {
         assert($this->rover->getX() === $arg1);
         assert($this->rover->getY() === $arg2);
+    }
+
+    /**
+     * @Then I move the rover forward
+     */
+    public function iMoveTheRoverForward()
+    {
+        $this->rover->send(RoverCommandEnum::FORWARD);
+    }
+
+    /**
+     * @Then I move the rover backward
+     */
+    public function iMoveTheRoverBackward()
+    {
+        $this->rover->send(RoverCommandEnum::BACKWARD);
     }
 }
