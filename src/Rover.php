@@ -4,12 +4,12 @@ declare(strict_types=1);
 
 namespace Ulco;
 
+use Ulco\enums\MarsObjectTypeEnum;
 use Ulco\enums\RoverCommandEnum;
 use Ulco\enums\RoverDirectionEnum;
 
-class Rover
+class Rover extends MarsObject
 {
-    public int $id;
 
     private RoverDirectionEnum $direction;
 
@@ -18,17 +18,17 @@ class Rover
 
     public function __construct(int $id)
     {
+        parent::__construct($id);
         $this->direction = RoverDirectionEnum::North;
-        $this->id = $id;
     }
 
     /**
-     * Gets id
-     * @return int
+     * Gets type
+     * @return MarsObjectTypeEnum
      */
-    public function getId(): int
+    public function getType(): MarsObjectTypeEnum
     {
-        return $this->id;
+        return MarsObjectTypeEnum::Rover;
     }
 
     public function getDirection(): RoverDirectionEnum

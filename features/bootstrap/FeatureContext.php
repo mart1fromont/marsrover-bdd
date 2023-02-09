@@ -3,7 +3,9 @@
 declare(strict_types=1);
 
 use Behat\Behat\Context\Context;
+use Ulco\enums\MarsObjectTypeEnum;
 use Ulco\Mars;
+use Ulco\Rock;
 use Ulco\Rover;
 use Ulco\enums\RoverCommandEnum;
 use Webmozart\Assert\Assert;
@@ -105,18 +107,19 @@ class FeatureContext implements Context
     }
 
     /**
-     * @Given there is an obstacle at :arg1, :arg2
+     * @Given there is a rock :id at :x, :y
      */
-    public function thereIsAnObstacleAt(int $arg1, int $arg2): void
+    public function thereIsARockAt(int $id, int $x, int $y): void
     {
-        $this->mars->addObstacle($arg1, $arg2);
+        $this->mars->addObject(new Rock($id), $x, $y);
     }
 
     /**
-     * @Then Rover should report :arg1
+     * @Then Rover should report rock at :x, :y
      */
-    public function RoverShouldReport (String $message): void
+    public function RoverShouldReportRock(int $x, int $y): void
     {
-        Assert::eq($this->rover->getObstacleMessage(), $message);
+        $object = $this->mars->getObjectAt($x, $y);
+        Assert::eq($object->getType(), MarsObjectTypeEnum::Rock);
     }
 }

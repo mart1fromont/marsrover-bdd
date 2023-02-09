@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Ulco;
 
+use Ulco\enums\MarsObjectTypeEnum;
 use Ulco\enums\RoverDirectionEnum;
 
 class Mars
@@ -50,6 +51,7 @@ class Mars
                     return (object)[
                         'x' => $x,
                         'y' => $y,
+                        'type' => $cell->getType(),
                     ];
                 }
             }
@@ -59,6 +61,28 @@ class Mars
             'x' => null,
             'y' => null,
         ];
+    }
+
+    /**
+     * Adds an object to the map
+     * @param MarsObject $obstacle
+     * @param int $x
+     * @param int $y
+     */
+    public function addObject(MarsObject $obstacle, int $x, int $y): void
+    {
+        $this->map[$x][$y] = $obstacle;
+    }
+
+    /**
+     * Gets the object at a position
+     * @param int $x
+     * @param int $y
+     * @return MarsObject|null
+     */
+    public function getObjectAt(int $x, int $y): ?MarsObject
+    {
+        return $this->map[$x][$y];
     }
 
     /**
@@ -105,6 +129,11 @@ class Mars
 
         if ($y >= $this->size) {
             $y = 0;
+        }
+
+        // If there is an obstacle, stop the rover
+        if ($this->getObjectAt($x, $y) != null) {
+            return;
         }
 
         // Remove the rover from the map
@@ -158,6 +187,11 @@ class Mars
 
         if ($y >= $this->size) {
             $y = 0;
+        }
+
+        // If there is an obstacle, stop the rover
+        if ($this->getObjectAt($x, $y) != null) {
+            return;
         }
 
         // Remove the rover from the map
